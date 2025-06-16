@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoapp/controllers/Constants/Appassets/appIcons.dart';
 import 'package:todoapp/controllers/Constants/Appassets/appimages.dart';
@@ -11,12 +14,12 @@ class SigninView extends StatefulWidget {
 
   @override
   State<SigninView> createState() => _SigninViewState();
-  TextEditingController emailcontroller=TextEditingController();
-  TextEditingController passwordcontroller=TextEditingController();
-
 }
 
 class _SigninViewState extends State<SigninView> {
+  TextEditingController email=TextEditingController();
+  TextEditingController password=TextEditingController();
+  bool isloading=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +62,9 @@ class _SigninViewState extends State<SigninView> {
                 SizedBox(height: 20,),
                      Padding(
                          padding: EdgeInsets.all(16),
-                         child: TextformfieldWidget(hinttext: 'E - mail', prefixicon: Icon(Icons.email),
-                           suffixicon: SizedBox(),
+                         child: TextformfieldWidget(hinttext: 'E - mail', prefixicon: Icon(Icons.mail),
+                           suffixicon: SizedBox(), controller:email,
+                           
                          )
             
                      ),
@@ -68,7 +72,7 @@ class _SigninViewState extends State<SigninView> {
                      Padding(
                          padding: EdgeInsets.all(16),
                          child: TextformfieldWidget(hinttext: 'Password', prefixicon: Icon(Icons.lock),
-                           suffixicon: IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye)),
+                           suffixicon: IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye)), controller: password,
             
                          )
             
@@ -81,17 +85,45 @@ class _SigninViewState extends State<SigninView> {
                     SizedBox(width: 7,),
                   ],
                 ),
+                isloading?CircularProgressIndicator():
                 Padding(
                   padding: EdgeInsets.all(16),
-                  child: Container(
-                    height: 42,
-                    width: 348,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Appcolors.lightbutton,
-                    ),
-                    child: Center(
-                      child: Textwidget(text: 'sign in', fontsize: 18, color: Appcolors.whitecolork),
+                  child: InkWell(
+                    onTap: () async{
+                      isloading=true;
+                      setState(() {
+                      });
+                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                          email: email.text.trim(),
+                          password: password.text).
+                      then((onValue){// for disappearing error when account is successfully created
+                        isloading=false;
+                        setState(() {
+
+                        });
+                      }).onError((handleError,error){// for disappearing loading while there is an error
+                        isloading=false;
+                        setState(() {
+
+                        });
+                        Get.snackbar(
+                          'Error',
+                            handleError.toString(),
+                          backgroundColor: Colors.red,
+                          titleText: Text('Error',style: TextStyle(color: Colors.white,fontSize: 20),)
+                        );
+                      });
+                      },
+                    child: Container(
+                      height: 42,
+                      width: 348,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Appcolors.lightbutton,
+                      ),
+                      child: Center(
+                        child: Textwidget(text: 'sign in', fontsize: 18, color: Appcolors.whitecolork),
+                      ),
                     ),
                   ),
                 ),

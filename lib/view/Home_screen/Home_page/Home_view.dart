@@ -52,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               SizedBox(width: 20,),
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
                   child: Textwidget(text: 'Group tasks', fontsize:16, color: Appcolors.whitecolork),
               ),
               SingleChildScrollView(
@@ -192,7 +192,8 @@ class _HomeViewState extends State<HomeView> {
                     ],
                   ),
                 ),
-              ),
+              ),// big contianers------------------------
+              SizedBox(height: 10,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                 child: Text('Incomplete tasks',style: GoogleFonts.poppins(
@@ -201,6 +202,7 @@ class _HomeViewState extends State<HomeView> {
                   color: Appcolors.whitecolork
                 ),),
               ),
+              SizedBox(height: 10,),
               Align(
                 alignment: Alignment.center,
                 child: Container(
@@ -210,8 +212,183 @@ class _HomeViewState extends State<HomeView> {
                     borderRadius: BorderRadius.circular(5),
                     color: Appcolors.whitecolork
                   ),
+                  child:Stack(
+                    children:[ Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 6),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                    
+                          Text('Client meeting',style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black,
+                          ),),
+                          Text('Tomorrow | 10:30pm',style: GoogleFonts.poppins(
+                            fontSize: 10,
+                            //fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade500,
+                          ),),
+                    
+                    
+                    
+                        ],
+                      ),
+                    ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 270,vertical: 5),
+                          child: Icon(Icons.chevron_right,size: 40,color: Appcolors.lightbutton,))
+                      ],
+                  )
                 ),
-              )
+              ),
+              SizedBox(height: 15,),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  width: MediaQuery.of(context).size.width*0.9,
+                  height: 51,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Appcolors.whitecolork
+                  ),
+                  child:Stack(
+                    children:[ Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 6),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          Text('Client meeting',style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black,
+                          ),),
+                          Text('Tomorrow | 10:30pm',style: GoogleFonts.poppins(
+                            fontSize: 10,
+                            //fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade500,
+                          ),),
+
+
+
+                        ],
+                      ),
+                    ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 270,vertical: 5),
+                          child: Icon(Icons.chevron_right,size: 40,color: Appcolors.lightbutton,))
+                      ],
+                  )
+                ),
+              ),
+              //small containers----------------------------------------------------
+              SizedBox(height: 10,),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                child: Text('Completed tasks',style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Appcolors.whitecolork
+                ),),
+              ),
+              SizedBox(height: 10,),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    height: 51,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Appcolors.whitecolork
+                    ),
+                    child:Stack(
+                      children:[
+                        Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40,vertical: 6),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+
+                            Text('Client meeting',style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),),
+                            Text('Tomorrow | 10:30pm',style: GoogleFonts.poppins(
+                              fontSize: 10,
+                              //fontWeight: FontWeight.bold,
+                              color: Colors.grey.shade500,
+                            ),),
+
+
+
+                          ],
+                        ),
+                      ),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 270,vertical: 5),
+                            child: Icon(Icons.chevron_right,size: 40,color: Appcolors.lightbutton,)),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 7,vertical: 15),
+                            child: CircleAvatar(radius: 10,
+                            backgroundColor: Colors.greenAccent,
+                            child: Icon(Icons.check,size: 15,color: Colors.white,),)
+                        ),
+                      ],
+                    )
+                ),
+              ),
+              SizedBox(height: 15,),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    height: 51,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Appcolors.whitecolork
+                    ),
+                    child:Stack(
+                      children:[
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 40,vertical: 6),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              Text('Client meeting',style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                              ),),
+                              Text('Tomorrow | 10:30pm',style: GoogleFonts.poppins(
+                                fontSize: 10,
+                                //fontWeight: FontWeight.bold,
+                                color: Colors.grey.shade500,
+                              ),),
+
+
+
+                            ],
+                          ),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 270,vertical: 5),
+                            child: Icon(Icons.chevron_right,size: 40,color: Appcolors.lightbutton,)),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 7,vertical: 15),
+                            child: CircleAvatar(radius: 10,
+                              backgroundColor: Colors.greenAccent,
+                              child: Icon(Icons.check,size: 15,color: Colors.white,),)
+                        ),
+                      ],
+                    )
+                ),
+              ),
+
+
+
             ],
           )
         ],

@@ -13,6 +13,9 @@ class SignUpview extends StatefulWidget {
 }
 
 class _SignUpviewState extends State<SignUpview> {
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
+  TextEditingController namecontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,15 +61,17 @@ class _SignUpviewState extends State<SignUpview> {
                 Padding(
                     padding: EdgeInsets.all(16),
                     child: TextformfieldWidget(hinttext: 'Full Name', prefixicon: Icon(Icons.account_circle_sharp),
-                      suffixicon: SizedBox(),
+                      suffixicon: SizedBox(), controller: namecontroller,
+
                     )
             
                 ),
                 SizedBox(height: 8,),
                 Padding(
                     padding: EdgeInsets.all(16),
-                    child: TextformfieldWidget(hinttext: 'E - mail', prefixicon: Icon(Icons.email),
+                    child: TextformfieldWidget(hinttext: 'E - mail', prefixicon: Icon(Icons.mail),
                       suffixicon: SizedBox(),
+                      controller: emailcontroller,
                     )
             
                 ),
@@ -75,6 +80,7 @@ class _SignUpviewState extends State<SignUpview> {
                     padding: EdgeInsets.all(16),
                     child: TextformfieldWidget(hinttext: 'Password', prefixicon: Icon(Icons.lock),
                       suffixicon: IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye)),
+                      controller: passwordcontroller,
             
                     )
             

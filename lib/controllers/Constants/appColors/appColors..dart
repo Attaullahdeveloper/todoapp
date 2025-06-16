@@ -7,4 +7,7 @@ class Appcolors{
  static Color lightbutton=Color(0xff0EA5E9);
  static Color smalltext=Color(0xff63D9F3);
  static Color subtext=Color(0xff00000070);
+ static Color bottom=Color(0xff63D9F3);
+ static Color textfield=Color(0xFF102D53CC);
+ static Color detail=Color(0xff05243E);
 }

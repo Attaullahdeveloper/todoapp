@@ -12,6 +12,7 @@ class verificationview extends StatefulWidget {
 }
 
 class _verificationviewState extends State<verificationview> {
+  TextEditingController verifcode=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +81,7 @@ class _verificationviewState extends State<verificationview> {
                           borderRadius: BorderRadius.circular(5),
                           color: Appcolors.whitecolork,
                         ),
-                        child:TextformfieldWidget(hinttext: 'Verification code', prefixicon: SizedBox(), suffixicon: SizedBox()),
+                        child:TextformfieldWidget(hinttext: 'Verification code', prefixicon: SizedBox(), suffixicon: SizedBox(), controller: verifcode,),
                       ),
                       SizedBox(height: 20,),
                       InkWell(
