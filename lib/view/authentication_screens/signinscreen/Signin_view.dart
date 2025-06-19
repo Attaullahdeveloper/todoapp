@@ -7,6 +7,7 @@ import 'package:todoapp/controllers/Constants/Appassets/appIcons.dart';
 import 'package:todoapp/controllers/Constants/Appassets/appimages.dart';
 import 'package:todoapp/controllers/widgets/textformfield_widget.dart';
 import 'package:todoapp/controllers/widgets/textwidget.dart';
+import 'package:todoapp/view/authentication_screens/sign_up/sign_upview.dart';
 
 import '../../../controllers/Constants/appColors/appColors..dart';
 class SigninView extends StatefulWidget {
@@ -101,6 +102,7 @@ class _SigninViewState extends State<SigninView> {
                         setState(() {
 
                         });
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUpview()));
                       }).onError((handleError,error){// for disappearing loading while there is an error
                         isloading=false;
                         setState(() {
@@ -113,6 +115,7 @@ class _SigninViewState extends State<SigninView> {
                           titleText: Text('Error',style: TextStyle(color: Colors.white,fontSize: 20),)
                         );
                       });
+
                       },
                     child: Container(
                       height: 42,

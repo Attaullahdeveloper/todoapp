@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:todoapp/view/Home_screen/Home_page/Home_view.dart';
 
 import '../../../controllers/Constants/Appassets/appIcons.dart';
 import '../../../controllers/Constants/Appassets/appimages.dart';
@@ -16,6 +20,7 @@ class _SignUpviewState extends State<SignUpview> {
   TextEditingController emailcontroller=TextEditingController();
   TextEditingController passwordcontroller=TextEditingController();
   TextEditingController namecontroller=TextEditingController();
+  bool isloading=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,17 +92,46 @@ class _SignUpviewState extends State<SignUpview> {
                 ),
             
                    SizedBox(height: 10,),
+                isloading?CircularProgressIndicator():
                 Padding(
                   padding: EdgeInsets.all(16),
-                  child: Container(
-                    height: 42,
-                    width: 348,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Appcolors.lightbutton,
-                    ),
-                    child: Center(
-                      child: Textwidget(text: 'sign in', fontsize: 18, color: Appcolors.whitecolork),
+                  child: InkWell(
+                    onTap: () async{
+                      isloading=true;
+                      setState(() {
+
+                      });
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: emailcontroller.text.trim(),
+                          password: passwordcontroller.text).then((onValue){
+                            isloading=false;
+                            setState(() {
+
+                            });
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeView()));
+                      }).onError((handleError,error){
+                        isloading=false;
+                        setState(() {
+
+                        });
+                        Get.snackbar(
+                       'Error',
+                          handleError.toString(),
+                          backgroundColor: Colors.red,
+                          titleText: Text('Error',style: TextStyle(fontSize: 20,color: Colors.white),)
+                        );
+                      });
+                    },
+                    child: Container(
+                      height: 42,
+                      width: 348,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Appcolors.lightbutton,
+                      ),
+                      child: Center(
+                        child: Textwidget(text: 'sign in', fontsize: 18, color: Appcolors.whitecolork),
+                      ),
                     ),
                   ),
                 ),
