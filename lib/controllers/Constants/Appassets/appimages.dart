@@ -9,4 +9,5 @@ class AppImgaes{
   static String profile='assets/img7.png';
   static String profile2='assets/img5.png';
   static String profile3='assets/img6.png';
+  static String responsive='assets/responsive.png';
 }
